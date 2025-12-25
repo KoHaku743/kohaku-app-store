@@ -1,0 +1,15 @@
+services:
+  tvheadend:
+    image: lscr.io/linuxserver/tvheadend:latest
+    container_name: tvheadend
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /home/user/appdata/tvheadend:/config
+      - /mnt/storage/recordings:/recordings
+    ports:
+      - 9981:9981
+      - 9982:9982
+    restart: unless-stopped
